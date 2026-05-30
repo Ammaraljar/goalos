@@ -26,12 +26,14 @@ jobs:
           flutter-version: '3.24.5'
           channel: 'stable'
 
-      - name: Fix model files
+      - name: Fix code issues
         run: |
           sed -i "/part '.*\.g\.dart';/d" lib/data/models/goal_model.dart
           sed -i "/part '.*\.g\.dart';/d" lib/data/models/task_model.dart
           sed -i "/part '.*\.g\.dart';/d" lib/data/models/habit_model.dart
           sed -i "/part '.*\.g\.dart';/d" lib/data/models/time_block_model.dart
+          grep -rl "TextDirection.rtl" lib/ | xargs sed -i 's/textDirection: TextDirection\.rtl,//g'
+          grep -rl "TextDirection.ltr" lib/ | xargs sed -i 's/TextDirection\.ltr/TextDirection.values[0]/g'
 
       - name: Get dependencies
         run: flutter pub get

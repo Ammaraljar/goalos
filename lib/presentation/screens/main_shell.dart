@@ -8,7 +8,8 @@ import 'goals/goals_screen.dart';
 import 'habits/habits_screen.dart';
 import 'schedule/schedule_screen.dart';
 import 'analytics/analytics_screen.dart';
-import '../../core/theme/app_theme.dart';
+import 'settings/settings_screen.dart';
+import '../../../core/theme/app_theme.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -26,6 +27,7 @@ class _MainShellState extends ConsumerState<MainShell> {
     ScheduleScreen(),
     HabitsScreen(),
     AnalyticsScreen(),
+    SettingsScreen(),
   ];
 
   @override
@@ -43,7 +45,7 @@ class _MainShellState extends ConsumerState<MainShell> {
         ),
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -82,6 +84,13 @@ class _MainShellState extends ConsumerState<MainShell> {
                   selected: _selectedIndex,
                   onTap: () => setState(() => _selectedIndex = 4),
                 ),
+                _NavItem(
+                  icon: Icons.settings_rounded,
+                  label: l10n.settings,
+                  index: 5,
+                  selected: _selectedIndex,
+                  onTap: () => setState(() => _selectedIndex = 5),
+                ),
               ],
             ),
           ),
@@ -114,7 +123,7 @@ class _NavItem extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
               ? AppColors.highlight.withOpacity(0.15)
@@ -133,7 +142,7 @@ class _NavItem extends StatelessWidget {
             Text(
               label,
               style: TextStyle(
-                fontSize: 10,
+                fontSize: 9,
                 color: isSelected ? AppColors.highlight : AppColors.textMuted,
                 fontWeight:
                     isSelected ? FontWeight.w600 : FontWeight.w400,

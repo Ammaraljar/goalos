@@ -1,8 +1,5 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
-
-part 'task_model.g.dart';
-
 enum TaskStatus { todo, inProgress, done }
 
 enum TaskPriority { red, orange, yellow, green, gray }

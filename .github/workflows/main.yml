@@ -32,8 +32,14 @@ jobs:
       - name: Generate localizations
         run: flutter gen-l10n
 
+      - name: Recreate Android folder with v2 embedding
+        run: |
+          rm -rf android
+          flutter create --platforms android .
+          sed -i 's/applicationId .*/applicationId "com.goalos.app"/' android/app/build.gradle
+
       - name: Build APK
-        run: flutter build apk --release --no-shrink
+        run: flutter build apk --release
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

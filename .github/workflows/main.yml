@@ -26,13 +26,20 @@ jobs:
           flutter-version: '3.24.5'
           channel: 'stable'
 
+      - name: Fix model files
+        run: |
+          sed -i "/part '.*\.g\.dart';/d" lib/data/models/goal_model.dart
+          sed -i "/part '.*\.g\.dart';/d" lib/data/models/task_model.dart
+          sed -i "/part '.*\.g\.dart';/d" lib/data/models/habit_model.dart
+          sed -i "/part '.*\.g\.dart';/d" lib/data/models/time_block_model.dart
+
       - name: Get dependencies
         run: flutter pub get
 
       - name: Generate localizations
         run: flutter gen-l10n
 
-      - name: Recreate Android folder with v2 embedding
+      - name: Recreate Android folder
         run: |
           rm -rf android
           flutter create --platforms android .

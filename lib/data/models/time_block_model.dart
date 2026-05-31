@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
-part 'time_block_model.g.dart';
 
 @HiveType(typeId: 3)
 class TimeBlockModel extends HiveObject {

@@ -1,5 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
+
+
 @HiveType(typeId: 0)
 class GoalModel extends HiveObject {
   @HiveField(0)

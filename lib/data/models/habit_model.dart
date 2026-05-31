@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:uuid/uuid.dart';
 
-part 'habit_model.g.dart';
 
 @HiveType(typeId: 2)
 class HabitModel extends HiveObject {
